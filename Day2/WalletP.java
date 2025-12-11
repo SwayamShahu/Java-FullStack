@@ -9,6 +9,7 @@ public  class WalletP{
         addTransaction("Check Balance");
         System.out.println("Current Balance: "+balance);
     }
+
     public boolean addMoney(double amount){
         balance += amount;
         addTransaction("Add Amount", amount);
@@ -20,12 +21,14 @@ public  class WalletP{
             addTransaction("Pay Amount",amount);
             return true;
         }
-        System.out.println("Insufficent Balance");
+        System.out.println("Insufficint Balance");
         return false;
     }
+
     public void addTransaction(String operation, double amount){
         transactions.add(LocalDateTime.now() +"|" + operation + ": "+amount);
     }
+
     public void addTransaction(String operation){
         transactions.add(LocalDateTime.now() +"|" + operation);
     }
@@ -36,5 +39,17 @@ public  class WalletP{
             System.out.println(transactions.get(i));
         }
         System.out.println("-----End-----");
+    }
+
+    public void fetchTransaction(int page,int limit){
+        if (page < 1 || ((10*(page-1)+1) > transactions.size())){
+            System.out.println("Invalid Page!!!");
+            return;
+        }
+        System.out.println("------Page: " + page + "------");
+        for (int i = (page-1)*limit; i<(page*limit) && i<transactions.size();i++){
+            System.out.println(transactions.get(i));
+        }
+        System.out.println("------Page End!!------");
     }
 }

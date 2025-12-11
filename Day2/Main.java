@@ -5,6 +5,25 @@ public class Main {
         w1.pay(2000); //3000
         w1.pay(5000); //Fail
         w1.checkBalance(); //3000 Amount left
+//        w1.seeTransaction();
+        w1.addMoney(5000);
+        w1.addMoney(5000);
+        w1.addMoney(5000);
+        w1.addMoney(5000);
+        w1.addMoney(5000);
+        w1.pay(5000);
+//        w1.addMoney(5000);
+        w1.addMoney(5000);
+        w1.addMoney(5000);
+        w1.addMoney(5000);
+        w1.addMoney(5000);
+        w1.addMoney(5000);
+        w1.addMoney(5000);
+        w1.addMoney(5000);
+        w1.addMoney(5000);
+        w1.pay(5000);
         w1.seeTransaction();
+
+        w1.fetchTransaction(2,10);
     }
 }
