@@ -52,4 +52,13 @@ public  class WalletP{
         }
         System.out.println("------Page End!!------");
     }
+
+    public void searchByType(String operation){
+        System.out.println("Transaction involving: " + operation);
+        for (int i = 0; i < transactions.size(); i++) {
+            if(transactions.get(i).toLowerCase().contains(operation.toLowerCase())){
+                System.out.println(transactions.get(i));
+            }
+        }
+    }
 }

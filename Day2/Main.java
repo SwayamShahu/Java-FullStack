@@ -22,8 +22,10 @@ public class Main {
         w1.addMoney(5000);
         w1.addMoney(5000);
         w1.pay(5000);
-        w1.seeTransaction();
+//        w1.seeTransaction();
 
-        w1.fetchTransaction(2,10);
+//        w1.fetchTransaction(2,10);
+
+        w1.searchByType("pay");
     }
 }
