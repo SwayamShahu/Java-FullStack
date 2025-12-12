@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Questions {
@@ -114,6 +115,42 @@ public class Questions {
         }else{
             System.out.println("Not a Palindrome Number");
         }
+    }
+
+    public void primeNumber(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+
+        boolean flag = true;
+        int i =2;
+        while(i < Math.sqrt(num)){
+            if(num % i == 0){
+                flag = false;
+            }
+            i++;
+        }
+        if (flag){
+            System.out.println("Number is a prime number!!!");
+        }else{
+            System.out.println("Number is not a prime number!!!");
+        }
+    }
+
+    public void arrayReverse(){
+        int[] arr = {1,2,3,4,5};
+        int i = 0;
+        int j = arr.length - 1;
+
+        while(i<j){
+            int temp = arr[j];
+            arr[j] = arr[i];
+            arr[i] = temp;
+            i++;
+            j--;
+        }
+
+        System.out.println(Arrays.toString(arr));
     }
 
 }

@@ -8,7 +8,9 @@ public class RunQuestion {
 //        obj.countAllDigits();
 //        obj.reverseNumber();
 
-        obj.palindrome();
+//        obj.palindrome();
 
+//        obj.primeNumber();
+        obj.arrayReverse();
     }
 }
