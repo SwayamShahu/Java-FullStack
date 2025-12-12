@@ -26,6 +26,6 @@ public class Main {
 
 //        w1.fetchTransaction(2,10);
 
-        w1.searchByType("pay");
+        w1.searchByType("Debit");
     }
 }
