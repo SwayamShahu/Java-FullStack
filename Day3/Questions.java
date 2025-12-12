@@ -137,7 +137,7 @@ public class Questions {
         }
     }
 
-    public void arrayReverse(){
+    public int[] arrayReverse(){
         int[] arr = {1,2,3,4,5};
         int i = 0;
         int j = arr.length - 1;
@@ -150,7 +150,7 @@ public class Questions {
             j--;
         }
 
-        System.out.println(Arrays.toString(arr));
+        return arr;
     }
 
 }

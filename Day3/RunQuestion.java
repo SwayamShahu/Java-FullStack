@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class RunQuestion {
     static void main(String[] args) {
         Questions obj = new Questions();
@@ -11,6 +13,7 @@ public class RunQuestion {
 //        obj.palindrome();
 
 //        obj.primeNumber();
-        obj.arrayReverse();
+        int[] arr = obj.arrayReverse();
+        System.out.println(Arrays.toString(arr));
     }
 }
