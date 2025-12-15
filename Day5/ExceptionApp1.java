@@ -3,6 +3,14 @@ package Day5;
 import java.util.Scanner;
 
 public class ExceptionApp1 {
+
+    public static void checkMarks(int marks) throws InvalidMarks{
+        if(marks < 35){
+            throw new InvalidMarks("Marks should be grater than 35 !!!");
+        }
+        System.out.println("Valid Marks.....");
+    }
+
     static int divide(){
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter 1st Number: ");
@@ -20,6 +28,8 @@ public class ExceptionApp1 {
         }
         return c;
     }
+
+
     static void main(String[] args) {
 //        int[] arr = new int[10];
 //        try{
@@ -52,6 +62,15 @@ public class ExceptionApp1 {
 //            System.out.println("Finally block running here !!!!!!!");
 //        }
 
-        divide();
+//       divide();
+//        checkMarks(32);
+//        System.out.println("Hey");
+        try{
+            checkMarks(32);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
+        System.out.println("Hey");
     }
 }
