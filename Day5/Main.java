@@ -12,8 +12,9 @@ public class Main {
     }
     static void main(String[] args) {
         int count = 0;
+        Scanner sc = new Scanner(System.in);
         while(count < 3){
-            Scanner sc = new Scanner(System.in);
+
             System.out.println("Enter User Name: ");
             String userName = sc.nextLine();
 
