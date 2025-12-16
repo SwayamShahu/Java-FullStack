@@ -31,7 +31,7 @@ public class FileMethods {
                 System.out.println("File already exist and it path is: " + file.getAbsolutePath() );
             }
             WriteFile wf = new WriteFile(file.getAbsolutePath(), "Hello World");
-            wf.changeData(file.getAbsolutePath(), "Hey, My Name is Swayam");
+            wf.changeData("Hey, My Name is Swayam");
 //            System.out.println(file.canRead());
 //            System.out.println(file.length());
         }catch (Exception e){
