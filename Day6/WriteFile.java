@@ -22,7 +22,7 @@ public class WriteFile {
         }
     }
 
-    public void changeData( String data){
+    public void changeData(String data){
         try{
             FileWriter fw = new FileWriter(path);
             fw.write(data);
@@ -49,5 +49,17 @@ public class WriteFile {
 
     public void seeData(){
         System.out.println("File contain is: " + this.currentData);
+    }
+
+    public void appendData(String data){
+        try{
+            FileWriter fw = new FileWriter(path, true);
+            fw.append(data);
+            this.currentData = this.currentData + data;
+            System.out.println("Content added.");
+            fw.close();
+        }catch(IOException e){
+            System.out.println(e);
+        }
     }
 }
