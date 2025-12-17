@@ -1,8 +1,6 @@
 package Day7;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.*;
 
 public class ArrayListMethods {
     static void main(String[] args) {
@@ -45,6 +43,7 @@ public class ArrayListMethods {
 //
 //        Objects[] arr = list.toArray();
 
+
         // Create a array list and add 5 integer. Print the list
         ArrayList<Integer> list = new ArrayList<>(5);
 
@@ -82,8 +81,27 @@ public class ArrayListMethods {
         ArrayList<Integer> list1 = new ArrayList<>(list);
         System.out.println("New array" + list1);
 
-        // Convert the array to arraylist
-        int[] arr = {1,2,3,4};
+//        Traversing the list
+
+        for(Integer element: list){
+            System.out.println(element);
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
+
+        Iterator it = list.iterator();
+
+        while (it.hasNext()){
+            System.out.println(it.next());
+        }
+
+        Collections.reverse(list);
+        System.out.println(list);
+        System.out.println(list.reversed());
+
+
 
 
     }
