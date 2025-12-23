@@ -1,0 +1,4 @@
+Event Loop -
+            - Web API
+            - Callback Queue
+            - Call Stack
