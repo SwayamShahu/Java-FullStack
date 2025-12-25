@@ -1,0 +1,113 @@
+-- Creating database
+create database student;
+use student;
+
+-- Create a table student
+create table student (id int primary key, name varchar(20), age int, marks int);
+insert into student values(1,"A",25,91);
+insert into student values(2,"B",20,88);
+insert into student values(3,"C",26,51);
+insert into student values(4,"D",31,49);
+insert into student values(5,"E",41,66);
+
+-- Display the inserted values
+select * from student;
+
+-- Display the student name, age and marks whose marks is greater than 70
+select name, age, marks from student where marks > 70;
+
+-- Display the name, marks of students by increasing the marks by 10 and marks should be exceed by 100
+set sql_safe_updates = 0;
+update student set marks = marks + 10 where marks <= 90;
+select * from student;
+
+-- Display the detail of students by decreasing the marks by 10 and marks should be less than 0
+update student set marks = marks - 10 where marks >= 10;
+select * from student;
+
+-- Add a new column in student table - fees and set it value to 50,000 
+alter table student add column fees int;
+update student set fees = 50000;
+select * from student;
+
+-- Show students name, id and annual fees;
+select name, id, fees * 12 as annualfees from student;
+
+-- Find the id and name of student start with a
+select id, name from student where name like "a%";
+
+-- Find the student name which contain x in their name
+select name from student where name like "%x%";
+
+-- Find the student name which contain y in second place
+select name from student where name like "_y";
+
+-- Find the student details whose marks are between 50-60
+select * from student where marks between 51 and 60;
+select * from student where marks >= 51 and marks <= 60;
+select * from student where marks > 51 and marks < 60;
+
+-- Database allow implict conversion of datatypes
+select * from student where marks = '51';
+
+-- Find the details of students whose marks are greater than 50 and age is less than 22
+select * from student where marks > 50 and age < 22;
+
+
+-- Find the details of students whose marks are greater than 50 or age is less than 22
+select * from student where marks > 50 or age < 22;
+
+-- Find the details of the student whose marks are greater than 61 or less than 59 age is greater than 20
+select * from student where marks > 61 or (marks < 59 and age < 21);
+select * from student where marks > 61 or marks < 59 and age < 21;
+
+-- Find the student whose fees is equlas to null
+select * from student where fees = null;
+select * from student where fees is null;
+
+-- Update fees equals to null of student with id 3;
+update student set fees = null where id =3;
+select * from  student;
+
+-- Find the student whose fees is equlas to null after updating null
+select * from student where fees = null;  -- No output - note that fees = null always return false
+select * from student where fees is null; -- return correct output
+
+select * from student where fees is not null;
+select * from student where fees != null;
+
+-- Find the student where not marks is greaker than 50
+select name from student where not marks > 50;
+
+-- Count the fees of the student
+select count(fees) from student; 
+
+select count(*) from student;
+
+-- Find the highest scorer of the class
+select name from student where marks = (select MAX(marks) from student);
+select * from student order by marks desc limit 1;
+
+-- Find the third topper of the class
+Select * from student order by marks desc limit 1 offset 2;
+
+-- Find the second lowest from the class 
+select * from student order by marks asc limit 1 offset 1;
+
+-- Find the student order by age and marks, age as descending and marks as ascending
+update student set age = 31 where id = 5;
+select * from student order by age desc , marks desc;
+
+-- Find the average marks of student 
+select avg(marks) as AverageMarks from student;
+
+-- Find the total sum of students
+select sum(marks) as TotalMarks from student;
+
+-- Delete the student less than averge
+Delete from student where marks < (select avg_marks from (select avg(marks) as avg_marks from student) as temp);
+select * from student;
+
+
+
+
