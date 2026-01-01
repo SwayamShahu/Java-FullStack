@@ -1,0 +1,162 @@
+.counterblock {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 300px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+}
+
+.buttons button {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  margin: 5px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.increaseCounter {
+  background-color: green;
+  color: rgb(255, 255, 255);
+}
+
+.decreaseCounter {
+  background-color: red;
+  color: rgb(255, 255, 255);
+}
+
+.textBody {
+  margin-top: 5px;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  padding: 5px;
+}
+
+.mybutton {
+  width: 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.task4Block {
+  width: 300px;
+  height: 300px;
+  padding: 5px;
+  border: 2px solid black;
+  margin-top: 5px;
+}
+
+#userInput {
+  width: 120px;
+  padding: 3px 8px 3px 8px;
+}
+
+.task5block {
+  width: 300px;
+  height: fit-content;
+  display: flex;
+  padding: 5px;
+  margin-top: 5px;
+  border: 2px solid black;
+  flex-direction: column;
+}
+
+.task5InputBlock input {
+  margin: 5px;
+}
+
+.task5OutputBlock {
+  margin: 5px;
+}
+
+/* Main container */
+.toDoTaskBlock {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f4f6f8;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Input section */
+.toDoTaskBlockInput {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.toDoTaskBlockInput label {
+  font-weight: bold;
+}
+
+.toDoTaskBlockInput input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.toDoTaskBlockInput input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Add task button */
+.toDoTaskBlockInput button {
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.toDoTaskBlockInput button:hover {
+  background-color: #0056b3;
+}
+
+.toDoTaskBlock>div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toDoTaskBlock>div:last-child>div {
+  padding: 10px;
+  border-radius: 6px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toDoTaskBlock>div:last-child>div[style*="green"] {
+  background-color: #d4edda !important;
+  color: #155724;
+}
+
+
+.toDoTaskBlock>div:last-child button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.toDoTaskBlock>div:last-child button:hover {
+  background-color: #1e7e34;
+}
