@@ -1,0 +1,26 @@
+.homeContainer {
+    display: flex;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid black
+}
+
+.productcarddiv {
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.productcarddiv h4 {
+    height: 25px;
+}
+
+.productcarddiv img {
+    width: 200px;
+    height: 200px;
+}
