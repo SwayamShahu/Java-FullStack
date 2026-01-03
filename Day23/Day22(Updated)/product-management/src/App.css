@@ -1,0 +1,330 @@
+/* =====================
+   GLOBAL RESET
+===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f4f7ff, #eef1f8);
+    color: #333;
+    min-height: 100vh;
+}
+
+/* =====================
+   NAVBAR
+===================== */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    background: linear-gradient(90deg, #4f46e5, #6366f1);
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: slideDown 0.6s ease;
+}
+
+.navbar h3 {
+    font-size: 1.3rem;
+}
+
+.navbar h5 {
+    margin-left: 20px;
+}
+
+.navLink {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    position: relative;
+}
+
+.navLink::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    transition: 0.3s;
+}
+
+.navLink:hover::after {
+    width: 100%;
+}
+
+/* =====================
+   HOME
+===================== */
+h1 {
+    text-align: center;
+    margin: 30px 0;
+    animation: fadeIn 0.8s ease;
+}
+
+.homeContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    padding: 30px 50px;
+}
+
+/* =====================
+   PRODUCT CARD
+===================== */
+.productcarddiv {
+    background: white;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: scaleIn 0.5s ease;
+}
+
+.productcarddiv:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.productcarddiv img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.productcarddiv h4 {
+    margin: 6px 0;
+    font-weight: 500;
+}
+
+.productcarddiv button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.productcarddiv button:first-of-type {
+    background: #4f46e5;
+}
+
+.productcarddiv button:first-of-type a {
+    color: white;
+    text-decoration: none;
+}
+
+.productcarddiv button:last-of-type {
+    background: #ef4444;
+    color: white;
+}
+
+.productcarddiv button:hover {
+    opacity: 0.85;
+    transform: scale(1.02);
+}
+
+/* =====================
+   ADD / EDIT PRODUCT FORM
+===================== */
+.addProductBlock,
+.EditProductDiv {
+    max-width: 500px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    animation: fadeUp 0.6s ease;
+}
+
+.addProductBlock h4,
+.EditProductDiv h4 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#addProductForm,
+#editProductForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#addProductForm label,
+#editProductForm label {
+    margin: 10px 0 4px;
+    font-weight: 500;
+}
+
+#addProductForm input,
+#editProductForm input {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+}
+
+#addProductForm input:focus,
+#editProductForm input:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+#addProductForm button,
+#editProductForm button {
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #4f46e5, #6366f1);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#addProductForm button:hover,
+#editProductForm button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .homeContainer {
+        padding: 20px;
+    }
+}
+
+/* =====================
+   ANIMATIONS
+===================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.productcarddiv {
+    background: #fff;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease;
+    max-width: 350px;
+    margin: auto;
+}
+
+.productcarddiv:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* 🔥 FIX IMAGE ISSUE */
+.productcarddiv img {
+    width: 100%;
+    height: 200px;
+    /* FIXED HEIGHT */
+    object-fit: contain;
+    /* NO CROPPING */
+    border-radius: 12px;
+    background: #f3f4f6;
+    /* neat background */
+    padding: 10px;
+}
+
+/* TEXT */
+.productcarddiv h4 {
+    margin: 6px 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* BUTTONS */
+.productcarddiv button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.productcarddiv button:first-of-type {
+    background: linear-gradient(90deg, #4f46e5, #6366f1);
+}
+
+.productcarddiv button:first-of-type a {
+    color: white;
+    text-decoration: none;
+}
+
+.productcarddiv button:last-of-type {
+    background: #ef4444;
+    color: white;
+}
+
+.productcarddiv button:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+}
