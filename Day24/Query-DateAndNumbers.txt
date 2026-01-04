@@ -1,0 +1,131 @@
+ -- Write a query to change cityname delhi to mumbai
+ UPDATE employees SET city = "Mumbai" WHERE city = "Delhi";
+ 
+ -- Write a query to extract first three character for city
+ SELECT SUBSTRING(city ,1,3) FROM employees;
+ SELECT LEFT(city, 3) FROM employees;
+ 
+ -- Write a query to find the position of a character 'm' in the city
+ -- Two functions -> locate()      instr()
+ SELECT LOCATE('m', city) AS POSITION FROM employees; 
+ SELECT INSTR(city, 'm') AS POSITION FROM employees; 
+ 
+ -- Write a query to find the position "ai" in city
+SELECT LOCATE('ai', city) AS POSITION FROM employees; 
+SELECT INSTR(city, 'ai') AS POSITION FROM employees;
+
+-- Write a query to retrieve sub string from city from the position where
+-- character 'l' appears in the city to end of the string 
+ SELECT SUBSTRING(city, LOCATE('u', city)) AS Sub_Str_City from employees;
+ 
+ -- Write a query to retrieve substring from city from the position 
+ -- where character 'u' appears retrieve 3 character
+ SELECT SUBSTRING(city, INSTR(city, 'u'), 3) AS substring_city FROM employees;
+ 
+ -- -value returns last character
+ SELECT SUBSTRING(city, -3) AS Sub_Str_City from employees;
+ 
+ -- Write a query to remove leading and trailing spaces from the city
+ SELECT TRIM(city) FROM employees; 
+ 
+ -- Write a query to add * to make length of city mumbaeei equal to 10
+ -- LPAD() for Left
+ SELECT LPAD("mumbai", 10, "*") from employees; 
+ 
+ -- Display employeeID as 6 digit number by adding leading 0's
+ select emp_id, lpad(emp_id, 6, '0') from employees;
+ 
+ -- RPAD()
+ select emp_id, rpad(emp_id, 6, '0') from employees;
+ 
+ -- Write a query to add '$' sign in salary
+ SELECT LPAD(salary, LENGTH(Salary) + 1, "$") From employees;
+ SELECT CONCAT('$', salary) FROM employees;
+ 
+ -- Padding will be added only when string length is less than padding length
+  SELECT LPAD(salary, 4, "$") From employees;
+ 
+ -- Write a query to display ASCI value of first character of name in each employee name
+ SELECT ASCII(substring(emp_name,1,1)) from employees;
+ SELECT ASCII(LEFT(emp_name,1)) from employees;
+ SELECT ASCII(LPAD(emp_name,1,"")) from employees;
+ 
+ -- Write a query to display employee name and id where id is odd
+ SELECT emp_id , emp_name FROM employees where (emp_id % 2 != 0);
+ 
+ -- Write a query to display employee name and id where id is even
+ SELECT emp_id , emp_name FROM employees where MOD(emp_id,2) = 0;
+ 
+ -- Select mod(0,0)
+ Select mod(0,0);
+ 
+ -- Write a query to display absolute value of -25
+ SELECT ABS(-25);
+ 
+ -- Find the absolate difference between salary and 60 Thousand with name 
+ Select emp_name, abs(salary - 60000) from employees;
+ 
+ -- Find the employees whose salary diffeence are more than 20000
+ SELECT emp_name FROM employees WHERE ABS(salary - 60000) > 20000;
+ 
+ -- Write a query to find rounded number after divided salary by 333
+ Select round(salary / 333) from employees;
+ 
+ -- Write a query to employeee name and salary dividedd by 333 to 2 decimal places 
+  Select emp_name, TRUNCATE(salary / 333, 2) from employees;
+  
+  -- 
+  SELECT TRUNCATE(9876.1234, -3);
+ 
+ -- Write a query display employee name and sqaure of id
+ SELECT emp_name, sqrt(emp_id) from employees;
+ 
+ -- Write a query to display employee name and power of 10 of employee id 
+ SELECT emp_name, power(emp_id, 10) from employees;
+ 
+-- Write a query to find sqaure of salary 
+SELECT emp_name, sqrt(salary) from employees;
+
+-- Write a query to display the emp name and ceil and floor salary divided by 777
+SELECT emp_name, CEIL(salary / 777), FLOOR(salary / 777) from employees;
+
+-- Dates Function 
+--- Write a query to display current date and time 
+SET TIME_ZONE = "+5:30";
+SELECT sysdate();
+
+SELECT localtime();
+
+SELECT curdate();
+
+SELECT @@Global.time_zone,@@session.time_zone;
+
+SELECT convert_tz(now(), @@session.time_zone, "+5:30");
+
+ SELECT * FROM employees ;
+ 
+ -- Create  a table booking where we have booking id, customer_name, city, booking date and time 
+ CREATE TABLE booking(
+ booking_id int auto_increment primary key, 
+ cust_name varchar(40),
+ city varchar(30),
+ created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+ );
+ 
+INSERT INTO booking(cust_name, city) values("Swayam", "Nagpur");
+INSERT INTO booking(cust_name, city) values("ABC", "Pune");
+INSERT INTO booking(cust_name, city) values("ALPHA", "Mumbai");
+INSERT INTO booking(cust_name, city) values("ZYX", "Nagpur");
+INSERT INTO booking(cust_name, city) values("BETA", "Pune");
+    
+INSERT INTO booking(cust_name, city, created_at) values("Lion", "Bihar", "2026-01-05 12:49:21");
+INSERT INTO booking(cust_name, city, created_at) values("Dogesh", "UP", "2025-01-05 12:49:21");    
+
+-- Write a query to display table order by created at
+SELECT * FROM booking ORDER BY created_at DESC;
+
+-- Write a query to display todays booking 
+SELECT * FROM booking where date(created_at) = curdate();
+SELECT * FROM booking where created_at between '2026-01-04 00:00:00' and '2026-01-05 00:00:00';
+
+ SELECT * FROM booking;
