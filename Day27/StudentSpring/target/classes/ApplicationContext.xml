@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    <bean id="jio" class="beans.Sim">-->
+<!--        <property name="name" value="Jio"/>-->
+<!--        <property name="number" value="9822714734"/>-->
+<!--    </bean>-->
+
+    <bean id="airtel" class="beans.Sim">
+<!--        <property name="name" value="airtel"/>-->
+<!--        <property name="number" value="7219472611"/>-->
+        <constructor-arg value="Airtel"></constructor-arg>
+        <constructor-arg value="7219472611"></constructor-arg>
+    </bean>
+
+    <bean id="engine" class="beans.Engine">
+        <property name="engineType" value="petrol" />
+        <property name="maxSpeed" value="120"/>
+    </bean>
+
+</beans>
