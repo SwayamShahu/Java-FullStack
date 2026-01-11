@@ -1,0 +1,90 @@
+create database employeeInfoManagement;
+
+use employeeInfoManagement;
+
+CREATE TABLE department (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR(50),
+    city VARCHAR(50)
+);
+
+CREATE TABLE employee (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    dept VARCHAR(50),
+    salary DECIMAL(10, 2),
+    city VARCHAR(50),
+    manager_id INT,
+    dept_id INT,
+    CONSTRAINT fk_emp_dept
+        FOREIGN KEY (dept_id)
+        REFERENCES department(dept_id)
+);
+
+INSERT INTO department (dept_id, dept_name, city) VALUES
+(1, 'IT', 'Pune'),
+(2, 'HR', 'Mumbai'),
+(3, 'Finance', 'Delhi'),
+(4, 'Sales', 'Bangalore'),
+(5, 'Marketing', 'Chennai'),
+(6, 'Support', 'Hyderabad');
+
+INSERT INTO department (dept_id, dept_name, city) VALUES (7, 'Management', 'Pune');
+
+INSERT INTO employee (name, dept, salary, city, manager_id, dept_id) VALUES
+('Amit Sharma', 'IT', 55000.00, 'Pune', NULL, 1),
+('Neha Verma', 'HR', 45000.00, 'Mumbai', 1, 2),
+('Rohit Mehta', 'Finance', 60000.00, 'Delhi', 2, 3),
+('Priya Singh', 'Sales', 50000.00, 'Bangalore', 3, 4),
+('Karan Patel', 'Marketing', 48000.00, 'Chennai', 2, 5),
+('Anjali Rao', 'Support', 42000.00, 'Hyderabad', 2, 6);
+
+INSERT INTO employee (name, dept, salary, city, manager_id, dept_id) VALUES ('Rajesh Hedaoo', 'IT', 55000.00, 'Pune', NULL, NULL);
+INSERT INTO employee (name, dept, salary, city, manager_id, dept_id) VALUES ('Nitin Jais', 'IT', 42000.00, 'Pune', NULL, 2);
+
+-- Q1. Display employee name with departmentname 
+SELECT e.name , d.dept_name FROM employee e JOIN department d on e.dept_id = d.dept_id;
+
+-- Q2. Display employees working in HR
+SELECT e.name , d.dept_name FROM employee e JOIN department d on e.dept_id = d.dept_id WHERE d.dept_name = 'HR';
+
+-- Q3. Display employees who are manager of some one 
+SELECT e1.name FROM employee e1 JOIN employee e2 on e1.manager_id = e2.id;
+-- SELECT name FROM employee where manager_id is not null; Wrong
+
+-- Q4. Display all employees with department even not assign
+SELECT e.name, d.dept_name FROM employee e LEFT JOIN department d on e.dept_id = d.dept_id;
+
+-- Q5. Display the employees who are not assigned to any dept
+SELECT e.name, d.dept_name FROM employee e LEFT JOIN department d on e.dept_id = d.dept_id WHERE d.dept_name is null;
+
+-- Q6. Display all the department even there are no employee
+SELECT dept_name from department GROUP BY dept_name;
+SELECT d.dept_name from department d LEFT JOIN employee e on e.dept_id = d.dept_id;
+
+-- Q7. Display the employee working under same manager
+SELECT e1.name, e2.name as colleague FROM employee e1 JOIN employee e2 on e1.manager_id = e2.manager_id and e1.id != e2.id;
+
+-- Q8. Display employees earning more than its manager
+SELECT e.name, m.name, e.salary, m.salary AS employee_name FROM employee e JOIN employee m ON e.manager_id = m.id WHERE e.salary > m.salary;
+
+-- Q9. Display all possible combination of employees and department
+SELECT e.name , d.dept_name FROM employee e CROSS JOIN department d;
+
+-- Q10. Display department name and number of employees 
+SELECT d.dept_name, COUNT(e.dept_id) FROM department d JOIN employee e ON d.dept_id = e.dept_id GROUP BY d.dept_name;
+
+-- Q11. Display manager name and and number employees reporting to them
+SELECT m.name, Count(e.manager_id) FROM employee m JOIN employee e ON m.id = e.manager_id GROUP BY e.manager_id;
+
+-- Q12. Display department name and average Salary
+SELECT d.dept_name , AVG(e.salary) FROM employee e JOIN department d on e.dept_id = d.dept_id GROUP BY d.dept_name;
+
+-- Q13. Display department name and highest salary
+SELECT d.dept_name , MAX(e.salary) FROM employee e JOIN department d on e.dept_id = d.dept_id GROUP BY d.dept_name;
+
+-- Q14. Display department having more than 1 employees
+SELECT d.dept_name, COUNT(e.name) FROM employee e JOIN department d on e.dept_id = d.dept_id GROUP BY d.dept_name HAVING COUNT(e.name) > 1;
+
+-- Q15. Display department name and number of manager
+select d.dept_name, count(distinct e.Manager_id) As managers from department d join employee e on d.dept_id = e.dept_id where e.manager_id is not null group by d.dept_name;
