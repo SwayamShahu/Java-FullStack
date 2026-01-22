@@ -11,5 +11,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class DepartmentRequestDTO {
     public String name;
-    public String Department;
+    public String description;
 }

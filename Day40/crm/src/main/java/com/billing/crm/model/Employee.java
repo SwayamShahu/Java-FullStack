@@ -57,7 +57,9 @@ public class Employee {
     )
     private List<Project> projects;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
     private User user;
+
+
 }

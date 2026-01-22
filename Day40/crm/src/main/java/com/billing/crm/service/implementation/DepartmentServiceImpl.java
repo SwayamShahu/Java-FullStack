@@ -1,5 +1,6 @@
 package com.billing.crm.service.implementation;
 
+import com.billing.crm.DTO.DepartmentRequestDTO;
 import com.billing.crm.model.Department;
 import com.billing.crm.repository.DepartmentRepository;
 import com.billing.crm.service.DepartmentService;
@@ -12,8 +13,11 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Autowired
     DepartmentRepository repository;
     @Override
-    public String createDepartment(Department department) {
-        repository.save(department);
+    public String createDepartment(DepartmentRequestDTO department) {
+        Department d = new Department();
+        d.setName(department.getName());
+        d.setDescription(department.getDescription());
+        repository.save(d);
         return "Department added Successfully";
     }
 
@@ -43,4 +47,5 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
         return "Fail to delete";
     }
+    
 }

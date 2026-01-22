@@ -1,5 +1,6 @@
 package com.billing.crm.controller;
 
+import com.billing.crm.DTO.DepartmentRequestDTO;
 import com.billing.crm.model.Department;
 import com.billing.crm.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class DepartmentController {
     DepartmentService service;
 
     @PostMapping("/admin/departments")
-    public String addDepartment(@RequestBody Department department){
+    public String addDepartment(@RequestBody DepartmentRequestDTO department){
         return service.createDepartment(department);
     }
 
