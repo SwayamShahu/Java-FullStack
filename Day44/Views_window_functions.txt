@@ -1,0 +1,84 @@
+-- 25th Jan
+-- Write a query to select employe id, name , salary, department name where salary > 30000
+SELECT e.id, e.name, e.salary, u.username from employees e JOIN user u on e.user_id = u.id WHERE e.salary > 30000;
+
+-- View -> A view a saved SQL query that behave like a table
+-- View = Stored select statement 
+
+CREATE VIEW high_salary_employees AS SELECT e.id, e.name, e.salary, u.username from employees e JOIN user u on e.user_id = u.id WHERE e.salary > 30000;
+
+SELECT * FROM high_salary_employees; -- View one (table)
+
+-- Write a query to select employe id, name , salary, username name where salary > 40000
+Select * from high_salary_employees where salary > 40000;
+
+-- No record 
+Select * from high_salary_employees where salary < 30000;
+
+-- Write a query to create a view of employee id, name, salary, manager name and username 
+CREATE VIEW newView1 AS SELECT e.id as Id, e.name as name , e.salary as salary, m.name as manager_name , u.username as username FROM employees e LEFT JOIN employees m on e.manager_id = m.id LEFT JOIN user
+u on e.user_id = u.id;
+
+SELECT * FROM newView1;
+
+-- User query -> view(No extra storage / virtual image of table) -> actual table
+
+-- View VS table
+-- Table - Stores data, physical storage, memory high, speed faster, security less 
+-- View - Do not store data, No storage, memory low, speed slower, security high
+
+-- Q. Why view have slow speed than table ?
+-- Ans. View stores query that must be executed on table ie, no direct access but table has direct access to data so it has more speeed.
+
+-- Q. Why view is more secure than table ?
+-- Ans. View is more secure as it work on image not on actual data.
+
+-- Q. Why we used views ? 
+-- Ans 1. Reuse  2. Secure  3. Simplify-reduce query writing time  4. Consistency 
+
+-- Q. Can we write table like select query on view ? 
+-- Ans. Yes
+
+-- Q. Write a query to select employees where salary greater than 30000 and status is active using views with name active_employees
+CREATE VIEW active_employees as SELECT name, salary, status, joining_date from employees where salary > 30000 AND status = "ACTIVE";
+SELECT * FROM active_employees;
+
+-- Q. Create a filter on that active_employees view
+--     1. JOIN AT 21 Jan 2026
+--     2. JOIN BETWEEN 21 Jan 2026 to 23 Jan 2026
+--     3. employees join in month of january
+-- 1. Answer  
+SELECT * FROM active_employees WHERE joining_date = "2026-01-21";
+
+-- 2. Answer 
+SELECT * FROM active_employees WHERE joining_date BETWEEN "2026-01-21" AND "2026-01-23";
+
+-- 3. Answer 
+SELECT * FROM active_employees WHERE month(joining_date)= 1  AND year(joining_date)= 2026;
+-- OR 
+SELECT * FROM active_employees WHERE joining_date BETWEEN "2026-01-01" AND "2026-01-31";
+
+-- Q. Show details of first join employee and last join employee
+-- ANSWER 
+-- First Join
+SELECT * FROM active_employees ORDER BY joining_date ASC LIMIT 1;
+-- Last join
+SELECT * FROM active_employees ORDER BY joining_date DESC LIMIT 1;
+
+-- Window function - It perform calculations across rows without colapsing them
+
+-- Ranking - it is a type of window function used to assign ranked value to each row within the order result set or parition.
+
+-- Row number - This is a function which assign unique number in each row based on orders
+
+-- Row number exmaple  
+SELECT name, joining_date, ROW_NUMBER() over (order by joining_date ASC) as first_rank_number from employees; 
+SELECT name, joining_date, ROW_NUMBER() over (order by joining_date DESC) as last_rank_number from employees; 
+
+SELECT * FROM (SELECT name, joining_date, ROW_NUMBER() over (order by joining_date ASC) as 
+first_rank, ROW_NUMBER() over (order by joining_date DESC) as last_rank FROM employees) t where first_rank = 1 or last_rank = 1;
+
+-- Window functions have main 3 category 
+-- 1. Aggregate (SUM, MAX, Min)  
+-- 2. Ranking (row_number(), rank(), dense_rank(), ntile(), percent_rank())
+-- 3. Analytic/value - access data from other row (lead(), lag(), first_value(), last_value())
