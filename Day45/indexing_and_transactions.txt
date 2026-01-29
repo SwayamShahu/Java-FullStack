@@ -1,0 +1,129 @@
+create database quiz;
+use quiz;
+CREATE TABLE quiz_question (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question VARCHAR(255),
+    option_a VARCHAR(100),
+    option_b VARCHAR(100),
+    option_c VARCHAR(100),
+    option_d VARCHAR(100),
+    correct_option CHAR(1)
+);
+CREATE TABLE quiz_result (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100),
+    score INT,
+    total INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    quiz_question VARCHAR(255)
+);
+
+SELECT * FROM quiz_question;
+SELECT * FROM quiz_result;
+
+INSERT INTO quiz_question(question) values("question1");
+INSERT INTO quiz_question(question) values("question2");
+INSERT INTO quiz_question(question) values("question3");
+INSERT INTO quiz_question(question) values("question4");
+
+
+SET SESSION cte_max_recursion_depth = 10000;
+
+INSERT INTO quiz_result(username, score, total, created_at, quiz_question)
+WITH RECURSIVE seq AS (
+    SELECT 1 AS n
+    UNION ALL
+    SELECT n+1 FROM seq WHERE n < 10000
+)
+SELECT
+    CONCAT('user', n),
+    FLOOR(RAND()*100),
+    100,
+    DATE_ADD('2025-01-01', INTERVAL FLOOR(RAND()*1500) DAY), CONCAT("question" , n)
+FROM seq;
+
+EXPLAIN SELECT * FROM quiz_result where username = "user99";
+
+ -- SYNTAX ->  CREATE INDEX indexname on table_name(column)
+CREATE INDEX index_username ON quiz_result(username);
+
+-- UNIQUE INDEXING
+CREATE UNIQUE INDEX index_username ON quiz_result(username);
+
+-- COMPOSITE INDEX
+CREATE INDEX index_username_score ON quiz_result(username, score);
+EXPLAIN SELECT * FROM quiz_result where username = "user99999" and score = 99;
+EXPLAIN SELECT * FROM quiz_result where score = 99;
+
+-- RULES 
+-- RULE 1. BREAKING POINT -> When we are using where condition and apply any function on it index will break;
+-- RULE 2. Index helps with where, join, order by, group by.
+-- RULE 3. Don't over index (Extra storage, Slow insert, Slow update) 
+-- RULE 4. Leftmost prefix rule (Composite)
+
+-- ERROR -Error Code: 1062. Duplicate entry 'user121' for key 'quiz_result.index_username'
+INSERT INTO quiz_result(username, score, total, created_at) values("user121", 99, 100, "2026-01-01");
+
+-- NOTE -> Index used binary tree to store data
+-- USERDATAIL 
+
+EXPLAIN SELECT * FROM quiz_result where lower(username) = "user9990";
+
+Explain SELECT * FROM quiz_result r JOIN quiz_question q on q.question = r.quiz_question;
+
+CREATE INDEX index1 on quiz_result(quiz_question);
+
+-- INDEX DROP
+DROP INDEX index_username ON quiz_result;
+
+DROP TABLE quiz_result;
+
+-- A transfer 5k to B and between system crashes
+-- Money deducted from A
+-- Not added to B
+-- Money lost
+
+-- Transaction - group of sql statements that execute as one unit.
+-- Either all succeed or all fail
+-- No Half work
+-- Parts/keywords -> 1. Start transaction(Begining of transaction)   2. Commit(Changes are save permanently)   3. Rollback(undo)
+
+CREATE TABLE account(
+	id int,
+    balance int,
+    name varchar(30)
+);
+
+INSERT INTO account(id, balance, name) values(1, 1000, "A");
+INSERT INTO account(id, balance, name) values(2, 4200, "B");
+INSERT INTO account(id, balance, name) values(3, 1200, "C");
+INSERT INTO account(id, balance, name) values(4, 10000, "D");
+INSERT INTO account(id, balance, name) values(5, 500, "E");
+
+SET SQL_SAFE_UPDATES = 0;
+
+-- D transfer 5000 to C
+SELECT * FROM account;
+SET autocommit = 0;
+START TRANSACTION;
+savepoint original;
+UPDATE account SET balance = balance - 5000 WHERE id = 4;
+savepoint deducted;
+select;
+UPDATE account SET balance = balance + 5000 WHERE id = 3;
+SELECT * FROM account;
+rollback TO original;
+rollback TO deducted;
+
+SELECT * FROM account;
+
+SELECT 
+
+SELECT @@autocommit
+
+-- SAVEPOINTS -> 
+
+UPDATE account SET balance = 10000 WHERE id = 4;
+UPDATE account SET balance = 5000 WHERE id = 3;
+Commit;
+
