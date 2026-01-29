@@ -1,0 +1,54 @@
+189. Rotate Array
+class Solution {
+    public void rotate(int[] nums, int k) {
+        // k = k % nums.length;
+        // while(k > 0){
+        //     int temp = nums[nums.length - 1];
+        //     for(int i = nums.length - 2; i >= 0; i--){
+        //         nums[i + 1] = nums[i];
+        //     }
+        //     nums[0] = temp;
+        //     k--;
+        // }
+
+
+        int[] temp = new int[nums.length];
+
+        for(int i = 0; i < nums.length; i++){
+            temp[(i + k)%nums.length] = nums[i];
+        }
+
+        for(int i = 0; i < nums.length; i++){
+            nums[i] = temp[i];
+        }
+    }
+} 
+
+
+
+509. Fibonacci Number
+class Solution {
+    public int fibAnswer(int n){
+        if(n<=1){
+            return n;
+        }
+        return fibAnswer(n - 1) + fibAnswer(n - 2);
+    }
+    public int fib(int n) {
+        // if(n < 2){
+        //     return n;
+        // }
+        // int sum = -1;
+        // int i = 0;
+        // int j = 1;
+        // while(n - 2 >= 0){
+        //     sum = i + j;
+        //     i = j;
+        //     j = sum;
+        //     n--;
+        // }
+        // return sum;
+
+        return fibAnswer(n);
+    }
+}
