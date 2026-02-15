@@ -1,0 +1,58 @@
+125. Valid Palindrome
+
+class Solution {
+    public boolean isPalindrome(String s) {
+        // s = s.toLowerCase();
+        // s = s.trim();
+        // s = s.replaceAll("[^a-z0-9]", "");
+        int i = 0;
+        int j = s.length() - 1;
+
+        while(i < j ){
+            while(i < j && !Character.isLetterOrDigit(s.charAt(i))){
+                i++;
+            }
+            while(i < j && !Character.isLetterOrDigit(s.charAt(j))){
+                j--;
+            }
+            if(Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j))){
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+}
+
+
+53. Maximum Subarray
+class Solution {
+    public int maxSubArray(int[] nums) {
+        // int maxSum = nums[0];
+        // int maxStartIndex = -1;
+        // int maxLastIndex = -1;
+
+        // for(int i = 0; i < nums.length; i++){
+        //     int sum = nums[i];
+        //     for(int j = i + 1; j < nums.length; j++){
+        //         sum = sum + nums[j];
+        //         if(sum > maxSum){
+        //             maxSum = sum;
+        //         }
+        //     }
+        // }       
+        // return maxSum;
+        int currsum = nums[0];
+        int maxsum = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] + currsum > nums[i])
+                currsum = nums[i] + currsum;
+            else
+                currsum = nums[i];
+            maxsum = Math.max(currsum, maxsum);
+
+        }
+        return maxsum;
+    }
+}
