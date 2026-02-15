@@ -1,0 +1,1458 @@
+db.students.find({_id = '69842db18adf6733a8e06402'})
+SyntaxError: Invalid shorthand property initializer. (1:22)
+
+> 1 | db.students.find({_id = '69842db18adf6733a8e06402'})
+    |                       ^
+db.students.find({_id : '69842db18adf6733a8e06402'})
+db.students.find({_id : ObjectId('69842db18adf6733a8e06402')})
+db.students.find({_id : ObjectId('69842db18adf6733a8e06403')})
+use school
+switched to db school
+db.students.find({_id : ObjectId('69842db18adf6733a8e06403')})
+{
+  _id: ObjectId('69842db18adf6733a8e06403'),
+  name: 'G',
+  age: 19,
+  marks: 23
+}
+db.students.find({_id : '69842db18adf6733a8e06402'})
+db.students.find().itcount
+[Function: itcount] AsyncFunction {
+  returnsPromise: true,
+  serverVersions: [ '0.0.0', '999.999.999' ],
+  apiVersions: [ 0, Infinity ],
+  topologies: [ 'ReplSet', 'Standalone', 'Sharded', 'LoadBalanced' ],
+  returnType: { type: 'unknown', attributes: {} },
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  newShellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+db.students.insertMany([{name: ayush, age: 31, marks:55}, {name: ayushi, age: 44, marks: 21}, {name: ansh, age: 44, marks: 78}])
+ReferenceError: ayush is not defined
+db.students.insertMany([{name: 'ayush', age: 31, marks:55}, {name: 'ayushi', age: 44, marks: 21}, {name: 'ansh', age: 44, marks: 78}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6985745485b81672742004a5'),
+    '1': ObjectId('6985745485b81672742004a6'),
+    '2': ObjectId('6985745485b81672742004a7')
+  }
+}
+db.students.find({name: {$regex: '^A'}})
+{
+  _id: ObjectId('69842db18adf6733a8e063fd'),
+  name: 'A',
+  age: 11,
+  marks: 99
+}
+db.students.find({name: {$regex: '^a'}})
+{
+  _id: ObjectId('6985745485b81672742004a5'),
+  name: 'ayush',
+  age: 31,
+  marks: 55
+}
+{
+  _id: ObjectId('6985745485b81672742004a6'),
+  name: 'ayushi',
+  age: 44,
+  marks: 21
+}
+{
+  _id: ObjectId('6985745485b81672742004a7'),
+  name: 'ansh',
+  age: 44,
+  marks: 78
+}
+db.students.find({name: {$regex: '^a', $options: 'i'}})
+{
+  _id: ObjectId('69842db18adf6733a8e063fd'),
+  name: 'A',
+  age: 11,
+  marks: 99
+}
+{
+  _id: ObjectId('6985745485b81672742004a5'),
+  name: 'ayush',
+  age: 31,
+  marks: 55
+}
+{
+  _id: ObjectId('6985745485b81672742004a6'),
+  name: 'ayushi',
+  age: 44,
+  marks: 21
+}
+{
+  _id: ObjectId('6985745485b81672742004a7'),
+  name: 'ansh',
+  age: 44,
+  marks: 78
+}
+db.students.find({name: {$regex: 'ns', $options: 'i'}})
+{
+  _id: ObjectId('6985745485b81672742004a7'),
+  name: 'ansh',
+  age: 44,
+  marks: 78
+}
+db.students.find({name: {$regex: 'h$', $options: 'i'}})
+{
+  _id: ObjectId('69842db18adf6733a8e06404'),
+  name: 'H',
+  age: 21,
+  marks: 48
+}
+{
+  _id: ObjectId('6985745485b81672742004a5'),
+  name: 'ayush',
+  age: 31,
+  marks: 55
+}
+{
+  _id: ObjectId('6985745485b81672742004a7'),
+  name: 'ansh',
+  age: 44,
+  marks: 78
+}
+db.students.find({name: {$regex: '[h,a]$', $options: 'i'}})
+{
+  _id: ObjectId('69842db18adf6733a8e063fd'),
+  name: 'A',
+  age: 11,
+  marks: 99
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06404'),
+  name: 'H',
+  age: 21,
+  marks: 48
+}
+{
+  _id: ObjectId('6985745485b81672742004a5'),
+  name: 'ayush',
+  age: 31,
+  marks: 55
+}
+{
+  _id: ObjectId('6985745485b81672742004a7'),
+  name: 'ansh',
+  age: 44,
+  marks: 78
+}
+db.students.insertOne({name: 'amit,', age: 44, marks: 78})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6985788885b81672742004a8')
+}
+db.students.find({name: {$regex: '[h,a]$', $options: 'i'}})
+{
+  _id: ObjectId('69842db18adf6733a8e063fd'),
+  name: 'A',
+  age: 11,
+  marks: 99
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06404'),
+  name: 'H',
+  age: 21,
+  marks: 48
+}
+{
+  _id: ObjectId('6985745485b81672742004a5'),
+  name: 'ayush',
+  age: 31,
+  marks: 55
+}
+{
+  _id: ObjectId('6985745485b81672742004a7'),
+  name: 'ansh',
+  age: 44,
+  marks: 78
+}
+{
+  _id: ObjectId('6985788885b81672742004a8'),
+  name: 'amit,',
+  age: 44,
+  marks: 78
+}
+db.students.find({name: {$regex: '[ha]$', $options: 'i'}})
+{
+  _id: ObjectId('69842db18adf6733a8e063fd'),
+  name: 'A',
+  age: 11,
+  marks: 99
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06404'),
+  name: 'H',
+  age: 21,
+  marks: 48
+}
+{
+  _id: ObjectId('6985745485b81672742004a5'),
+  name: 'ayush',
+  age: 31,
+  marks: 55
+}
+{
+  _id: ObjectId('6985745485b81672742004a7'),
+  name: 'ansh',
+  age: 44,
+  marks: 78
+}
+db.students.find({name:{$regex: '^^[AH]', $options: 'i'}})
+{
+  _id: ObjectId('69842db18adf6733a8e063fd'),
+  name: 'A',
+  age: 11,
+  marks: 99
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06404'),
+  name: 'H',
+  age: 21,
+  marks: 48
+}
+{
+  _id: ObjectId('6985745485b81672742004a5'),
+  name: 'ayush',
+  age: 31,
+  marks: 55
+}
+{
+  _id: ObjectId('6985745485b81672742004a6'),
+  name: 'ayushi',
+  age: 44,
+  marks: 21
+}
+{
+  _id: ObjectId('6985745485b81672742004a7'),
+  name: 'ansh',
+  age: 44,
+  marks: 78
+}
+{
+  _id: ObjectId('6985788885b81672742004a8'),
+  name: 'amit,',
+  age: 44,
+  marks: 78
+}
+db.students.find({name: {$regex: '/[ha]$/i'}})
+db.students.find(city: 'Nagpur').size()
+SyntaxError: Unexpected token, expected "," (1:21)
+
+> 1 | db.students.find(city: 'Nagpur').size()
+    |                      ^
+db.students.find(city: 'Nagpur').size
+SyntaxError: Unexpected token, expected "," (1:21)
+
+> 1 | db.students.find(city: 'Nagpur').size
+    |                      ^
+db.students.find({city: 'Nagpur'}).size
+[Function: size] AsyncFunction {
+  returnsPromise: true,
+  serverVersions: [ '0.0.0', '999.999.999' ],
+  apiVersions: [ 0, Infinity ],
+  topologies: [ 'ReplSet', 'Standalone', 'Sharded', 'LoadBalanced' ],
+  returnType: { type: 'unknown', attributes: {} },
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  newShellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+db.students.find({city: 'Nagpur'}).size()
+14
+db.stundents.aggregate([{$count: 'Total_Students'}])
+db.students.aggregate([{$count: 'Total_Students'}])
+{
+  Total_Students: 14
+}
+db.students.aggregate([
+{$match: 
+{age: {$gt: 23}}
+}
+])
+{
+  _id: ObjectId('6985745485b81672742004a5'),
+  name: 'ayush',
+  age: 31,
+  marks: 55,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('6985745485b81672742004a6'),
+  name: 'ayushi',
+  age: 44,
+  marks: 21,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('6985745485b81672742004a7'),
+  name: 'ansh',
+  age: 44,
+  marks: 78,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('6985788885b81672742004a8'),
+  name: 'amit,',
+  age: 44,
+  marks: 78,
+  city: 'Nagpur'
+}
+db.student.aggregate([{$match: {
+      age: { $gt: 20 },
+      name: { $regex: /^a/i }
+    }
+  }
+]);
+db.students.aggregate([{$match: {
+      age: { $gt: 20 },
+      name: { $regex: /^a/i }
+    }
+  }
+]);
+{
+  _id: ObjectId('6985745485b81672742004a5'),
+  name: 'ayush',
+  age: 31,
+  marks: 55,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('6985745485b81672742004a6'),
+  name: 'ayushi',
+  age: 44,
+  marks: 21,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('6985745485b81672742004a7'),
+  name: 'ansh',
+  age: 44,
+  marks: 78,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('6985788885b81672742004a8'),
+  name: 'amit,',
+  age: 44,
+  marks: 78,
+  city: 'Nagpur'
+}
+db.students.aggregate([
+{$match:
+{$and: [{age: {$gt: 23}}, {name: {$regex: '^a'}}]}
+}
+])
+{
+  _id: ObjectId('6985745485b81672742004a5'),
+  name: 'ayush',
+  age: 31,
+  marks: 55,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('6985745485b81672742004a6'),
+  name: 'ayushi',
+  age: 44,
+  marks: 21,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('6985745485b81672742004a7'),
+  name: 'ansh',
+  age: 44,
+  marks: 78,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('6985788885b81672742004a8'),
+  name: 'amit,',
+  age: 44,
+  marks: 78,
+  city: 'Nagpur'
+}
+db.students.aggregate([
+{$match:
+{$and: [{age: {$lt: 25}}, {city: nagpur}, {marks: {gt: 70}}]}
+}
+])
+ReferenceError: nagpur is not defined
+db.students.aggregate([
+{$match:
+{$and: [{age: {$lt: 25}}, {city: 'nagpur'}, {marks: {gt: 70}}]}
+}
+])
+db.students.aggregate([{$match: {
+      age: { $lt: 25 },
+      marks: { $gt: 70 }, city : "Nagpur"
+    }
+  }
+])
+{
+  _id: ObjectId('69842db18adf6733a8e063fd'),
+  name: 'A',
+  age: 11,
+  marks: 99,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('69842db18adf6733a8e063fe'),
+  name: 'B',
+  age: 15,
+  marks: 76,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('69842db18adf6733a8e063ff'),
+  name: 'C',
+  age: 22,
+  marks: 81,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06402'),
+  name: 'F',
+  age: 16,
+  marks: 99,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06406'),
+  name: 'J',
+  age: 22,
+  marks: 79,
+  city: 'Nagpur'
+}
+db.students.aggregate([
+{$match:
+{$and: [{age: {$lt: 25}}, {city: 'Nagpur'}, {marks: {gt: 70}}]}
+}
+])
+db.students.aggregate([
+{$match:
+{$and: [{age: {$lt: 25}}, {city: 'Nagpur'}, {marks: {$gt: 70}}]}
+}
+])
+{
+  _id: ObjectId('69842db18adf6733a8e063fd'),
+  name: 'A',
+  age: 11,
+  marks: 99,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('69842db18adf6733a8e063fe'),
+  name: 'B',
+  age: 15,
+  marks: 76,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('69842db18adf6733a8e063ff'),
+  name: 'C',
+  age: 22,
+  marks: 81,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06402'),
+  name: 'F',
+  age: 16,
+  marks: 99,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06406'),
+  name: 'J',
+  age: 22,
+  marks: 79,
+  city: 'Nagpur'
+}
+db.students.aggregate([{$match: {
+      age: { $lt: 25 },
+      marks: { $gt: 70 }, city : "Nagpur"
+    }
+  }
+{ $project: [{name: 1},{city: 1}]
+}
+])
+SyntaxError: Unexpected token, expected "," (6:0)
+
+  4 |     }
+  5 |   }
+> 6 | { $project: [{name: 1},{city: 1}]
+    | ^
+  7 | }
+  8 | ])
+  9 |
+db.students.aggregate([{$match: {
+      age: { $lt: 25 },
+      marks: { $gt: 70 }, city : "Nagpur"
+    }
+  },
+{ $project: [{name: 1},{city: 1}]
+}
+])
+MongoServerError[Location15969]: $project specification must be an object
+db.students.aggregate([{$match: {
+      age: { $lt: 25 },
+      marks: { $gt: 70 }, city : "Nagpur"
+    }
+  },
+{ $project: {name: 1,city: 1}
+}
+])
+{
+  _id: ObjectId('69842db18adf6733a8e063fd'),
+  name: 'A',
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('69842db18adf6733a8e063fe'),
+  name: 'B',
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('69842db18adf6733a8e063ff'),
+  name: 'C',
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06402'),
+  name: 'F',
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06406'),
+  name: 'J',
+  city: 'Nagpur'
+}
+db.students.aggregate([{$match: {
+      age: { $lt: 25 },
+      marks: { $gt: 70 }, city : "Nagpur"
+    }
+  },
+{ $project: {_id: 0 , name: 1,city: 1}
+}
+])
+{
+  name: 'A',
+  city: 'Nagpur'
+}
+{
+  name: 'B',
+  city: 'Nagpur'
+}
+{
+  name: 'C',
+  city: 'Nagpur'
+}
+{
+  name: 'F',
+  city: 'Nagpur'
+}
+{
+  name: 'J',
+  city: 'Nagpur'
+}
+db.students.aggregate([{$match: {
+      age: { $lt: 25 },
+      marks: { $gt: 70 }, city : "Nagpur"
+    }
+  },
+{ $project: {_id: 0 , label: ‘$name’,city: 1}
+}
+])
+SyntaxError: Unexpected character '‘'. (6:29)
+
+  4 |     }
+  5 |   },
+> 6 | { $project: {_id: 0 , label: ‘$name’,city: 1}
+    |                              ^
+  7 | }
+  8 | ])
+  9 |
+db.students.aggregate([{$match: {
+      age: { $lt: 25 },
+      marks: { $gt: 70 }, city : "Nagpur"
+    }
+  },
+{ $project: {_id: 0 , label: '$name',city: 1}
+}
+])
+{
+  city: 'Nagpur',
+  label: 'A'
+}
+{
+  city: 'Nagpur',
+  label: 'B'
+}
+{
+  city: 'Nagpur',
+  label: 'C'
+}
+{
+  city: 'Nagpur',
+  label: 'F'
+}
+{
+  city: 'Nagpur',
+  label: 'J'
+}
+db.students.aggregate([{$match: {
+      age: { $lt: 25 },
+      marks: { $gt: 70 }, city : "Nagpur"
+    }
+  },
+{$set: {bonus: 5}},
+{ $project: {_id: 0 , label: ‘$name’,city: 1}
+}
+])
+SyntaxError: Unexpected character '‘'. (7:29)
+
+   5 |   },
+   6 | {$set: {bonus: 5}},
+>  7 | { $project: {_id: 0 , label: ‘$name’,city: 1}
+     |                              ^
+   8 | }
+   9 | ])
+  10 |
+db.students.aggregate([{$match: {
+      age: { $lt: 25 },
+      marks: { $gt: 70 }, city : "Nagpur"
+    }
+  },
+{$set: {bonus: 5}},
+{ $project: {_id: 0 , label: '$name',city: 1}
+}
+])
+{
+  city: 'Nagpur',
+  label: 'A'
+}
+{
+  city: 'Nagpur',
+  label: 'B'
+}
+{
+  city: 'Nagpur',
+  label: 'C'
+}
+{
+  city: 'Nagpur',
+  label: 'F'
+}
+{
+  city: 'Nagpur',
+  label: 'J'
+}
+db.students.aggregate([{$match: {
+      age: { $lt: 25 },
+      marks: { $gt: 70 }, city : "Nagpur"
+    }
+  },
+{$set: {bonus: 5}},
+{ $project: {_id: 0 , label: '$name',city: 1, bonus: 1}
+}
+])
+{
+  city: 'Nagpur',
+  bonus: 5,
+  label: 'A'
+}
+{
+  city: 'Nagpur',
+  bonus: 5,
+  label: 'B'
+}
+{
+  city: 'Nagpur',
+  bonus: 5,
+  label: 'C'
+}
+{
+  city: 'Nagpur',
+  bonus: 5,
+  label: 'F'
+}
+{
+  city: 'Nagpur',
+  bonus: 5,
+  label: 'J'
+}
+db.students.aggregate([{$match: {
+      age: { $lt: 25 },
+      marks: { $gt: 70 }, city : "Nagpur"
+    }
+  },
+{$set: {createdAt: {$toDate: '$_id'}}},
+{ $project: {_id: 0 , label: '$name',city: 1, createdAt: 1}
+}
+])
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'A'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'B'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'C'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'F'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'J'
+}
+db.students.aggregate([{$set: {createdAt: {$toDate: '$_id'}}},
+{$match: {
+    
+createdAt: {$gt: '2026-02-04'}
+    }
+  },
+{ $project: {_id: 0 , label: '$name',city: 1, createdAt: 1}
+}
+])
+db.students.aggregate([{$set: {createdAt: {$toDate: '$_id'}}},
+{$match: {
+    
+createdAt: {$gte: '2026-02-04'}
+    }
+  },
+{ $project: {_id: 0 , label: '$name',city: 1, createdAt: 1}
+}
+])
+db.students.aggregate([{$set: {createdAt: {$toDate: '$_id'}}},
+{$match: {
+    
+createdAt: {$gte: new Date('2026-02-04')}
+    }
+  },
+{ $project: {_id: 0 , label: '$name',city: 1, createdAt: 1}
+}
+])
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'A'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'B'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'C'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'D'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'E'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'F'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'G'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'H'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'I'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'J'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-06T04:55:48.000Z,
+  label: 'ayush'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-06T04:55:48.000Z,
+  label: 'ayushi'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-06T04:55:48.000Z,
+  label: 'ansh'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-06T05:13:44.000Z,
+  label: 'amit,'
+}
+db.students.aggregate([{$set: {createdAt: {$toDate: '$_id'}}},
+{$match: {
+    
+createdAt: {$gte: new Date('2026-02-04'), $lte: new Date('2026-02-06')}
+    }
+  },
+{ $project: {_id: 0 , label: '$name',city: 1, createdAt: 1}
+}
+])
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'A'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'B'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'C'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'D'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'E'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'F'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'G'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'H'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'I'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'J'
+}
+db.students.aggregate([{$set: {createdAt: {$toDate: '$_id'}}},
+{$match: {
+   
+createdAt: {$gte: new Date(Date.now() – 7 * 24 * 60 * 60 * 1000)}
+    }
+  },
+{ $project: {_id: 0 , label: '$name',city: 1, createdAt: 1}
+}
+])
+SyntaxError: Unexpected character '–'. (4:38)
+
+  2 | {$match: {
+  3 |    
+> 4 | createdAt: {$gte: new Date(Date.now() – 7 * 24 * 60 * 60 * 1000)}
+    |                                       ^
+  5 |     }
+  6 |   },
+  7 | { $project: {_id: 0 , label: '$name',city: 1, createdAt: 1}
+db.students.aggregate([{$set: {createdAt: {$toDate: '$_id'}}},
+{$match: {
+   
+createdAt: {$gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)}
+    }
+  },
+{ $project: {_id: 0 , label: '$name',city: 1, createdAt: 1}
+}
+])
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'A'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'B'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'C'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'D'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'E'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'F'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'G'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'H'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'I'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z,
+  label: 'J'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-06T04:55:48.000Z,
+  label: 'ayush'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-06T04:55:48.000Z,
+  label: 'ayushi'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-06T04:55:48.000Z,
+  label: 'ansh'
+}
+{
+  city: 'Nagpur',
+  createdAt: 2026-02-06T05:13:44.000Z,
+  label: 'amit,'
+}
+db.students.aggregate([{$set: {createdAt: {$toDate: '$_id'}}},
+{$match: {
+   
+createdAt: {$gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)}
+    }
+  },{
+$unset: '_id'
+}
+}
+])
+SyntaxError: Unexpected token, expected "," (9:0)
+
+   7 | $unset: '_id'
+   8 | }
+>  9 | }
+     | ^
+  10 | ])
+  11 |
+db.students.aggregate([{$set: {createdAt: {$toDate: '$_id'}}},
+{$match: {
+   
+createdAt: {$gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)}
+    }
+  },{
+$unset: '_id'
+}
+])
+{
+  name: 'A',
+  age: 11,
+  marks: 99,
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z
+}
+{
+  name: 'B',
+  age: 15,
+  marks: 76,
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z
+}
+{
+  name: 'C',
+  age: 22,
+  marks: 81,
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z
+}
+{
+  name: 'D',
+  age: 18,
+  marks: 45,
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z
+}
+{
+  name: 'E',
+  age: 15,
+  marks: 52,
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z
+}
+{
+  name: 'F',
+  age: 16,
+  marks: 99,
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z
+}
+{
+  name: 'G',
+  age: 19,
+  marks: 23,
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z
+}
+{
+  name: 'H',
+  age: 21,
+  marks: 48,
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z
+}
+{
+  name: 'I',
+  age: 18,
+  marks: 59,
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z
+}
+{
+  name: 'J',
+  age: 22,
+  marks: 79,
+  city: 'Nagpur',
+  createdAt: 2026-02-05T05:42:09.000Z
+}
+{
+  name: 'ayush',
+  age: 31,
+  marks: 55,
+  city: 'Nagpur',
+  createdAt: 2026-02-06T04:55:48.000Z
+}
+{
+  name: 'ayushi',
+  age: 44,
+  marks: 21,
+  city: 'Nagpur',
+  createdAt: 2026-02-06T04:55:48.000Z
+}
+{
+  name: 'ansh',
+  age: 44,
+  marks: 78,
+  city: 'Nagpur',
+  createdAt: 2026-02-06T04:55:48.000Z
+}
+{
+  name: 'amit,',
+  age: 44,
+  marks: 78,
+  city: 'Nagpur',
+  createdAt: 2026-02-06T05:13:44.000Z
+}
+db.students.aggregate([{$set: {createdAt: {$toDate: '$_id'}}},
+{$match: {
+   
+createdAt: {$gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)}
+    }
+  },{
+  $replaceWith: {
+    label: "$name",
+    score: "$marks"
+  }
+}
+}
+])
+SyntaxError: Unexpected token, expected "," (12:0)
+
+  10 |   }
+  11 | }
+> 12 | }
+     | ^
+  13 | ])
+  14 |
+db.students.aggregate([{$set: {createdAt: {$toDate: '$_id'}}},
+{$match: {
+   
+createdAt: {$gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)}
+    }
+  },{
+  $replaceWith: {
+    label: "$name",
+    score: "$marks"
+  }
+}
+])
+{
+  label: 'A',
+  score: 99
+}
+{
+  label: 'B',
+  score: 76
+}
+{
+  label: 'C',
+  score: 81
+}
+{
+  label: 'D',
+  score: 45
+}
+{
+  label: 'E',
+  score: 52
+}
+{
+  label: 'F',
+  score: 99
+}
+{
+  label: 'G',
+  score: 23
+}
+{
+  label: 'H',
+  score: 48
+}
+{
+  label: 'I',
+  score: 59
+}
+{
+  label: 'J',
+  score: 79
+}
+{
+  label: 'ayush',
+  score: 55
+}
+{
+  label: 'ayushi',
+  score: 21
+}
+{
+  label: 'ansh',
+  score: 78
+}
+{
+  label: 'amit,',
+  score: 78
+}
+db.students.aggregate([{$sort: {name: 1}}, {$skip: (2 – 1)* 5}, {$limit: 5}])
+SyntaxError: Unexpected character '–'. (1:54)
+
+> 1 | db.students.aggregate([{$sort: {name: 1}}, {$skip: (2 – 1)* 5}, {$limit: 5}])
+    |                                                       ^
+db.students.aggregate([{$sort: {name: 1}}, {$skip: (2 - 1)* 5}, {$limit: 5}])
+{
+  _id: ObjectId('69842db18adf6733a8e06402'),
+  name: 'F',
+  age: 16,
+  marks: 99,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06403'),
+  name: 'G',
+  age: 19,
+  marks: 23,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06404'),
+  name: 'H',
+  age: 21,
+  marks: 48,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06405'),
+  name: 'I',
+  age: 18,
+  marks: 59,
+  city: 'Nagpur'
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06406'),
+  name: 'J',
+  age: 22,
+  marks: 79,
+  city: 'Nagpur'
+}
+Db.students.aggragate([{$group: {_id: groupfield, newfield: {operator}}}])
+ReferenceError: Db is not defined
+db.students.aggragate([{$group: {_id: groupfield, newfield: {operator}}}])
+ReferenceError: groupfield is not defined
+db.students.aggragate([{$group: {_id: ‘$city’, total_students: {$sum: 1}}}])
+SyntaxError: Unexpected character '‘'. (1:38)
+
+> 1 | db.students.aggragate([{$group: {_id: ‘$city’, total_students: {$sum: 1}}}])
+    |                                       ^
+db.students.aggragate([{$group: {_id: '$city', total_students: {$sum: 1}}}])
+TypeError: db.students.aggragate is not a function
+db.students.aggregate([{$group: {_id: '$city', total_students: {$sum: 1}}}])
+{
+  _id: 'Nagpur',
+  total_students: 14
+}
+db.students.aggregate([{$group: {_id: '$city', avg: {$avg: $marks}}}])
+ReferenceError: $marks is not defined
+db.students.aggregate([{$group: {_id: '$city', avg: {$avg: '$marks'}}}])
+{
+  _id: 'Nagpur',
+  avg: 63.785714285714285
+}
+db.students.aggregate([{$group: {_id: '$city', total: {$total: '$marks'}}}])
+MongoServerError[Location15952]: unknown group operator '$total'
+db.students.aggregate([{$group: {_id: '$city', total: {$sum: '$marks'}}}])
+{
+  _id: 'Nagpur',
+  total: 893
+}
+db.students.aggregate([{$group: {_id: '$city', highest: {$max: '$marks'}}}])
+{
+  _id: 'Nagpur',
+  highest: 99
+}
+db.students.aggregate([{$group: {_id: '$city', lowest: {$min: '$marks'}}}])
+{
+  _id: 'Nagpur',
+  lowest: 21
+}
+db.students.aggregate([{$group: {_id: '$city', students: {$push: '$name'}}}])
+{
+  _id: 'Nagpur',
+  students: [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'ayush',
+    'ayushi',
+    'ansh',
+    'amit,'
+  ]
+}
+db.students.aggregate([{$group: {_id: '$city'}}])
+{
+  _id: 'Nagpur'
+}
+db.students.aggregate([{$group: {city: '$city', students: {$push: '$name'}}}])
+MongoServerError[Location40234]: The field 'city' must be an accumulator object
+db.students.aggregate([{$group: {_city: '$city', students: {$push: '$name'}}}])
+MongoServerError[Location40234]: The field '_city' must be an accumulator object
+db.students.aggregate([{$group: {_id: '$city', students: {$push: '$name'}}}])
+
+
+db.order.insertMany([{studentId: ObjectId('69842db18adf6733a8e063fd'), amount: 1200, courseName: 'Java Full stack'},{studentId: ObjectId('6985745485b81672742004a6'), amount: 1600, courseName: 'UI/US'}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6985caa2948ff70eafe11083'),
+    '1': ObjectId('6985caa2948ff70eafe11084')
+  }
+}
+db.order.find()
+{
+  _id: ObjectId('6985caa2948ff70eafe11083'),
+  studentId: ObjectId('69842db18adf6733a8e063fd'),
+  amount: 1200,
+  courseName: 'Java Full stack'
+}
+{
+  _id: ObjectId('6985caa2948ff70eafe11084'),
+  studentId: ObjectId('6985745485b81672742004a6'),
+  amount: 1600,
+  courseName: 'UI/US'
+}
+db.students.aggregate([{$lookup: {from: 'order', localField: '_id', foreignField: 'studentId', as: "orders"}}])
+{
+  _id: ObjectId('69842db18adf6733a8e063fd'),
+  name: 'A',
+  age: 11,
+  marks: 99,
+  city: 'Nagpur',
+  orders: [
+    {
+      _id: ObjectId('6985caa2948ff70eafe11083'),
+      studentId: ObjectId('69842db18adf6733a8e063fd'),
+      amount: 1200,
+      courseName: 'Java Full stack'
+    }
+  ]
+}
+{
+  _id: ObjectId('69842db18adf6733a8e063fe'),
+  name: 'B',
+  age: 15,
+  marks: 76,
+  city: 'Nagpur',
+  orders: []
+}
+{
+  _id: ObjectId('69842db18adf6733a8e063ff'),
+  name: 'C',
+  age: 22,
+  marks: 81,
+  city: 'Nagpur',
+  orders: []
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06400'),
+  name: 'D',
+  age: 18,
+  marks: 45,
+  city: 'Nagpur',
+  orders: []
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06401'),
+  name: 'E',
+  age: 15,
+  marks: 52,
+  city: 'Nagpur',
+  orders: []
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06402'),
+  name: 'F',
+  age: 16,
+  marks: 99,
+  city: 'Nagpur',
+  orders: []
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06403'),
+  name: 'G',
+  age: 19,
+  marks: 23,
+  city: 'Nagpur',
+  orders: []
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06404'),
+  name: 'H',
+  age: 21,
+  marks: 48,
+  city: 'Nagpur',
+  orders: []
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06405'),
+  name: 'I',
+  age: 18,
+  marks: 59,
+  city: 'Nagpur',
+  orders: []
+}
+{
+  _id: ObjectId('69842db18adf6733a8e06406'),
+  name: 'J',
+  age: 22,
+  marks: 79,
+  city: 'Nagpur',
+  orders: []
+}
+{
+  _id: ObjectId('6985745485b81672742004a5'),
+  name: 'ayush',
+  age: 31,
+  marks: 55,
+  city: 'Nagpur',
+  orders: []
+}
+{
+  _id: ObjectId('6985745485b81672742004a6'),
+  name: 'ayushi',
+  age: 44,
+  marks: 21,
+  city: 'Nagpur',
+  orders: [
+    {
+      _id: ObjectId('6985caa2948ff70eafe11084'),
+      studentId: ObjectId('6985745485b81672742004a6'),
+      amount: 1600,
+      courseName: 'UI/US'
+    }
+  ]
+}
+{
+  _id: ObjectId('6985745485b81672742004a7'),
+  name: 'ansh',
+  age: 44,
+  marks: 78,
+  city: 'Nagpur',
+  orders: []
+}
+{
+  _id: ObjectId('6985788885b81672742004a8'),
+  name: 'amit,',
+  age: 44,
+  marks: 78,
+  city: 'Nagpur',
+  orders: []
+}
+
+
+
+
