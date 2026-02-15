@@ -1,0 +1,132 @@
+Leetcode 496. Next Greater Element I
+
+class Solution {
+    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        int[] ans = new int[nums1.length];
+
+        // Method 1
+        // for(int i = 0; i < nums1.length; i++){
+        //     ans[i] = -1;
+        // }
+        // int index = 0;
+        // for(int i: nums1){
+        //     int secondArrayIndex = -1;
+        //     for(int j = 0; j < nums2.length; j++){
+        //         if(nums2[j] == i){
+        //             secondArrayIndex = j;
+        //         }
+        //     }
+        //     for(int j = secondArrayIndex; j < nums2.length; j++){
+        //         if(nums2[j] > i){
+        //             ans[index] = nums2[j];
+        //             break;
+        //         }
+        //     }
+        //     index++;
+        // }
+        // return ans;
+
+        // Method 2
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        Stack<Integer> s = new Stack<>();
+        for(int i: nums2){
+            while(!s.isEmpty() && i > s.peek()){
+                hm.put(s.pop(), i);
+            }
+            s.push(i);
+        }
+        for(int i = 0; i < nums1.length; i++){
+            ans[i] = hm.getOrDefault(nums1[i], -1);
+        }
+        return ans;
+    }
+}
+
+leetcode 155. Min Stack
+
+import java.util.Stack;
+
+class MinStack {
+    Stack<Integer> stack;
+    Integer min = null;
+
+    public MinStack() {
+        stack = new Stack<>();
+    }
+
+    public void push(int val) {
+        if (min == null || val <= min) {
+            if (min != null) {
+                stack.push(min); 
+            }
+            min = val;
+        }
+        stack.push(val);
+    }
+
+    public void pop() {
+        if (!stack.isEmpty()) {
+            int val = stack.pop();
+            if (val == min) {
+                min = stack.isEmpty() ? null : stack.pop();
+            }
+        }
+    }
+
+    public int top() {
+        return stack.peek();
+    }
+
+    public int getMin() {
+        return min;
+    }
+}
+
+
+Leetcode 242. Valid Anagram
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        
+        if(s.length() != t.length()){
+            return false;
+        }
+
+        int[] arr = new int[26];
+
+        for(int i = 0; i < 26; i++){
+            arr[i] = 0;
+        }
+
+        for(int i = 0; i < s.length(); i++){
+            int index = (int) s.charAt(i) - (int) 'a';
+
+            arr[index] = arr[index] + 1;
+        }
+
+        for(int i = 0; i < t.length(); i++){
+            int index = (int) t.charAt(i) - (int) 'a';
+            if(arr[index] > 0){
+                arr[index] = arr[index] - 1;
+            }else{
+                return false;
+            }
+        }
+
+        return true;
+
+
+        // if(s.length() != t.length()){
+        //     return false;
+        // }
+        // int c = (int)s.charAt(0);
+        // for(int i = 1; i < s.length(); i++){
+        //     c = c ^ (int)s.charAt(i);
+        // }
+        // for(int i = 0; i < t.length(); i++){
+        //     c = c ^ (int)t.charAt(i);
+        // }
+        // if(c == 0) return true;
+        // return false;
+    }
+}
